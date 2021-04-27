@@ -8,7 +8,7 @@ object UserHolder {
     fun registerUser(fullName: String, email: String, password: String): User {
         val user = User.makeUser(fullName, email = email, password = password)
         if (map.containsKey(user.login)) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("A user with this email already exists")
         } else {
             map[user.login] = user
         }
@@ -35,7 +35,7 @@ object UserHolder {
         }
         val user = User.makeUser(fullName, phone = phone)
         if (map.containsKey(user.login)) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("A user with this phone already exists")
         } else {
             map[user.login] = user
             user.accessCode
