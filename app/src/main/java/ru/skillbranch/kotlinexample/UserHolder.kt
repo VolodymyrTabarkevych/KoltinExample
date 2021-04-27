@@ -31,7 +31,7 @@ object UserHolder {
 
     fun registerUserByPhone(fullName: String, phone: String): User {
         if (!phone.matches(Regex("[0-9+() -]+"))) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("Enter a valid phone number starting with a + and containing 11 digits")
         }
         val user = User.makeUser(fullName, phone = phone)
         if (map.containsKey(user.login)) {
